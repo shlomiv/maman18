@@ -1,5 +1,6 @@
 package maman18.library;
 
+import maman18.data.Do;
 import maman18.data.RBTree;
 import maman18.library.Library.Subscriber;
 
@@ -99,11 +100,13 @@ public class CommandParser {
 						if (most != null) {
 							System.out.println("the following subscribers has the most ("+ most.firstEntry().count + ") books:");
 							
-							// get all their names (in a inorder scan), O(n)
-							for (Subscriber s : most.values()) {
-								// and print them
-								System.out.println("\t" + s.name);
-							}
+							// traverse the result in-order, and print each Subscriber (O(n))
+							most.foreach(new Do<Subscriber>() {
+								@Override
+								public void action(Subscriber s) {
+									System.out.println("\t" + s.name);
+								}
+							});
 						} else {
 							System.out.println("no one has any books!");
 						}
