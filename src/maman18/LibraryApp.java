@@ -7,6 +7,10 @@ import java.io.InputStreamReader;
 import maman18.library.CommandParser;
 import maman18.library.Library;
 
+/**
+ * @author Shlomi.v
+ *
+ */
 public class LibraryApp {
 	public static void main(String[] args) {
 		CommandParser parser = new CommandParser(new Library());

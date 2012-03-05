@@ -5,7 +5,7 @@ import maman18.data.RBTree;
 import maman18.library.Library.Subscriber;
 
 /**
- * @author Shlomi
+ * @author Shlomi.v
  * 
  * This class is responsible for parsing the user input, and manipulating the Library accordingly
  *
