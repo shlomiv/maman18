@@ -298,61 +298,6 @@ public class RBTree<K, V> {
 		return root.maxDepth();
 	}
 	
-	public static void main(String[] args) {
-		final Comparator<Integer> order = new Comparator<Integer>() {
-			@Override
-			public int compare(Integer o1, Integer o2) {
-				return o1.compareTo(o2);
-			}
-		};
-
-		RBTree<Integer, String> tree = RBTree.empty(order);
-		tree.put(4, "ASS");
-		tree.put(2, "BIATCHh");
-		tree.put(6, "KRKRK");
-		tree.put(5, "BIATCH");
-		tree.put(14, "ASS");
-		tree.put(22, "BIATCHh");
-		tree.put(26, "KRKRK");
-		tree.put(15, "BIATCH");
-		tree.put(42, "ASS");
-		tree.put(21, "BIATCHh");
-		tree.put(64, "KRKRK");
-		tree.put(51, "BIATCH");
-		tree.put(124, "ASS");
-		tree.put(122, "BIATCHh");
-		tree.put(126, "KRKRK");
-		tree.put(115, "BIATCH");
-		System.out.println(tree.maxDepth());
-
-		System.out.println(tree.get(2));
-		
-		tree.remove(4);
-		tree.remove(2);
-		System.out.println(tree.maxDepth());
-		tree.remove(6);
-		tree.remove(5);
-		tree.remove(14);
-		tree.remove(22);
-		tree.remove(26);
-		System.out.println(tree.maxDepth());
-		tree.remove(15);
-		tree.remove(42);
-		tree.remove(21);
-		tree.remove(64);
-		tree.remove(51);
-		tree.remove(124);
-		tree.remove(122);
-		System.out.println(tree.maxDepth());
-		tree.remove(126);
-		tree.remove(115);
-		
-		
-		System.out.println(tree.maxDepth());
-
-
-	}
-
 	public boolean containsKey(K key) {
 		return get(key) != null;
 	}
