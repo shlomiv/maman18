@@ -8,9 +8,10 @@ import maman18.library.CommandParser;
 import maman18.library.Library;
 
 /**
- * @author Shlomi
+ * @author Shlomi.v
  *
  * this is the entry point to our application.
+ *
  */
 public class LibraryApp {
 	public static void main(String[] args) {
