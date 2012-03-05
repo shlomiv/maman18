@@ -155,7 +155,7 @@ public class RBTree<K, V> {
 		 */
 		public void foreach(Do<V> action) {
 			if (left != null) left.foreach(action);
-			action.action(root.value);
+			action.action(value);
 			if (right != null) right.foreach(action);
 		}
 	}

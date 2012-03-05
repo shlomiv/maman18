@@ -56,7 +56,7 @@ public class CommandParser {
 			case '-': { // a '-' must mean remove subscriber
 					int id = Integer.valueOf(cmds[2]);
 					lib.removeSubscriber(id);
-					System.out.println("removed user " + id);
+					System.out.println("Subscriber " + id + "  removed");
 				}
 				break;
 			case '?': { // a '?' means a beginning of a query, lets check which one:
@@ -70,7 +70,7 @@ public class CommandParser {
 						Subscriber who = lib.whoHoldsTheBook(query);
 						
 						// and print out a proper response
-						System.out.println(who != null ? who.name + " has the book "+ query : "No subscriber is holding that book");
+						System.out.println(who != null ? who.name + " has the book "+ query : "No subscriber is holding this book " + query);
 					} 
 					// if it begins with a digit, then we got a query regarding a subscriber - what books that he hold?
 					else if (Character.isDigit(query.charAt(0))) {
@@ -81,13 +81,13 @@ public class CommandParser {
 						// get the current subscriber, O(lgn)
 						Subscriber s = lib.getSubscriber(id);
 						if (s != null) {
-							System.out.println("User " + s.name + " " + s.id+ " has these books:");
+							System.out.println("Subscriber " + s.name + " " + s.id+ " has these books:");
 							
 							// we found him, print out all of his books, O(1)
 							for (int i = 0; i < s.count; i++)
 								System.out.println("\t" + s.books[i]);
 						} else {
-							System.out.println("No such subscriber exists " + id);
+							System.out.println("Subscriber " + id + " does not exist");
 						}
 	
 					} 
@@ -108,7 +108,7 @@ public class CommandParser {
 								}
 							});
 						} else {
-							System.out.println("no one has any books!");
+							System.out.println("no subscribers has any books!");
 						}
 					}
 				}

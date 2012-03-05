@@ -91,7 +91,7 @@ public class Library {
 		int count = s.count;
 
 		for (int i = 0; i < count; i++) {
-			subReturnBook(id, s.books[0]); // O(lgm)
+			subReturnBook(id, s.books[0]); // O(lgm+lgn)
 		}
 
 		subs.remove(id); // O(lgn)
@@ -109,12 +109,12 @@ public class Library {
 		Subscriber s = subs.get(subId); // O(lgn)
 		if (s != null) {
 			if (s.count == s.books.length) {
-				System.out.println("Subscriber " + s.name + " " + s.id + " book limit reached");
+				System.out.println("Subscriber " + s.name + " " + s.id + " cant borrow any more books.");
 				return;
 			}
-			Subscriber book = whoHoldsTheBook.get(bookId); // O(lgm)
-			if (book != null) {
-				System.out.println("another subscriber ("+book.id+") already took this book");
+			Subscriber hasThisBook = whoHoldsTheBook.get(bookId); // O(lgm)
+			if (hasThisBook != null) {
+				System.out.println("Another subscriber ("+hasThisBook.id+") already took this book (" + bookId +")");
 				return;
 			}
 			
