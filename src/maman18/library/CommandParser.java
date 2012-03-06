@@ -55,8 +55,13 @@ public class CommandParser {
 				break;
 			case '-': { // a '-' must mean remove subscriber
 					int id = Integer.valueOf(cmds[2]);
+					String name = cmds[1];
+					
+					System.out.println("Removing subscriber " + name + " (" + id + ")");
+					
 					lib.removeSubscriber(id);
-					System.out.println("Subscriber " + id + "  removed");
+					
+					System.out.println("Subscriber " + name + " (" + id + ") removed");
 				}
 				break;
 			case '?': { // a '?' means a beginning of a query, lets check which one:
@@ -65,6 +70,9 @@ public class CommandParser {
 					
 					// and a letter must mean we got a query regarding a book - who olds the book
 					if (Character.isLetter(query.charAt(0))) {
+						
+						// print out the query
+						System.out.println("Query: which subscriber has the book " + query + "?");
 						
 						// find out who holds this book, O(lgm)
 						Subscriber who = lib.whoHoldsTheBook(query);
@@ -77,6 +85,9 @@ public class CommandParser {
 
 						// get the id of the subscriber 
 						int id = Integer.valueOf(query);
+						
+						// print out the query
+						System.out.println("Query: Which books does subscriber " + id + " hold?");
 						
 						// get the current subscriber, O(lgn)
 						Subscriber s = lib.getSubscriber(id);
@@ -93,6 +104,10 @@ public class CommandParser {
 					} 
 					// it begins with a '!' - meaning we want to get a list of all the users that has the most books
 					else if (query.trim().charAt(0) == '!') {
+						
+						// print out the query
+						System.out.println("Query: Which subscribers has the most books?");
+						
 						// get the RBTree containing all these users, O(1)
 						RBTree<Integer, Subscriber> most = lib.mostBorrowed();
 						

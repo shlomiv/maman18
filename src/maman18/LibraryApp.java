@@ -15,10 +15,15 @@ import maman18.library.Library;
  */
 public class LibraryApp {
 	public static void main(String[] args) {
+		// initialize the parser and a new library
 		CommandParser parser = new CommandParser(new Library());
+		
+		// prepare a command reader
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		System.out.println("Welcome to the library, please enter a command\nEnter quit to exit the application");
+		
+		// Endlessly run..
 		try {
 			while (true) {
 				System.out.print("> ");

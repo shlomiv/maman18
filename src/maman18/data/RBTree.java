@@ -199,8 +199,7 @@ public class RBTree<K, V> {
 		Node p = root;
 		while (p != null) {
 			int theOrder = order.compare(key, p.key);
-			if (theOrder == 0)
-				return p;
+			if (theOrder == 0) return p; 
 			p = theOrder < 0 ? p.left : p.right;
 		}
 		return p;
@@ -298,7 +297,7 @@ public class RBTree<K, V> {
 
 	
 	/**
-	 * @param z
+	 * @param z - the node to fix
 	 * this method is a helper to the fixup method..
 	 */
 	private void finalInsertFix(Node z) {
@@ -451,8 +450,8 @@ public class RBTree<K, V> {
 	/**
 	 * @param action - the action to perform over each item in the tree
 	 * I was too lazy to write a linked list or a stack :)
-	 * so instead i used a function that will get execute during the tree traversal.. 
-	 * the traversal is done in-order, so the action gets on the keys in a sorted order
+	 * so instead i used a function that will get executed during the tree traversal.. 
+	 * the traversal is done in-order, so the action gets on the keys in a sorted manner
 	 * Complexity: O(n)   
 	 */
 	public void foreach(Do<V> action) {

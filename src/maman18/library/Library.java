@@ -14,6 +14,8 @@ import maman18.data.RBTree;
  */
 public class Library {
 
+	final static int MAX_BOOKS = 10;
+	
 	/**
 	 * an inner class representing each library subscriber
 	 */
@@ -25,7 +27,7 @@ public class Library {
 
 		final String name;
 		final int id;
-		String books[] = new String[10]; // a maximum of 10 books
+		String books[] = new String[MAX_BOOKS]; // a maximum of 10 books
 		int count;
 	}
 
@@ -52,7 +54,7 @@ public class Library {
 	// mostBooks:       [0..10]->SubId->Subscriber
 	RBTree<Integer, Subscriber> subs = RBTree.empty(intOrd);
 	RBTree<String, Subscriber> whoHoldsTheBook = RBTree.empty(strOrd);
-	RBTree<Integer, Subscriber> mostBooks[] = new RBTree[10];
+	RBTree<Integer, Subscriber> mostBooks[] = new RBTree[MAX_BOOKS];
 
 	/**
 	 * The constructor, builds 10 empty RBTrees
@@ -95,7 +97,6 @@ public class Library {
 		}
 
 		subs.remove(id); // O(lgn)
-
 	}
 
 	/**
@@ -175,9 +176,9 @@ public class Library {
 				sub.books[sub.count - 1] = null;
 				
 				// fix mostBooks
-				mostBooks[sub.count-- -1].remove(subId); // O(lgm)
+				mostBooks[sub.count-- -1].remove(subId); // O(lgn)
 				if (sub.count > 0) 
-					mostBooks[sub.count - 1].put(subId, sub); // O(lgm)
+					mostBooks[sub.count - 1].put(subId, sub); // O(lgn)
 				
 				System.out.println(sub.name + " returned the book " + bookId);
 				return;
@@ -195,7 +196,7 @@ public class Library {
 	public RBTree<Integer, Subscriber> mostBorrowed() {
 		// find the largest RB-Tree that is not empty, it will contain all the users that are holding
 		// that many books
-		for (int i = 9; i >= 0; i--) {
+		for (int i = mostBooks.length-1; i >= 0; i--) {
 			if (mostBooks[i].isNotEmpty()) {
 				return mostBooks[i];
 			}
